@@ -1,8 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Explore from './pages/explore';
+import Navbar from './components/Navbar';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Profile from './pages/Profile';
+import Explore from './pages/Explore';
+import Find from './pages/Find';
+// import Profile from './pages/Profile';
 import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
@@ -11,6 +13,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path='/' element={<Explore />} />
+                    <Route path='/find' element={<Find />} />
                     <Route path='/profile' element={<SignIn />} />
                     <Route path='/sign-in' element={<SignIn />} />
                     <Route path='/sign-up' element={<SignUp />} />
@@ -19,6 +22,7 @@ function App() {
                         element={<ForgotPassword />}
                     />
                 </Routes>
+                <Navbar />
             </Router>
         </>
     );
