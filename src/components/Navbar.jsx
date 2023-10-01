@@ -26,7 +26,14 @@ function Navbar() {
                             width='36px'
                             height='36px'
                         />
-                        <p>Explore</p>
+                        <p
+                            className={
+                                pathMatchRoute('/')
+                                    ? 'navbarListItemNameActive'
+                                    : 'navbarListItemName'
+                            }>
+                            Explore
+                        </p>
                     </li>
                     <li
                         className='navbarListItem'
@@ -38,7 +45,14 @@ function Navbar() {
                             width='36px'
                             height='36px'
                         />
-                        <p>Search</p>
+                        <p
+                            className={
+                                pathMatchRoute('/find')
+                                    ? 'navbarListItemNameActive'
+                                    : 'navbarListItemName'
+                            }>
+                            Search
+                        </p>
                     </li>
                     <li
                         className='navbarListItem'
@@ -52,7 +66,14 @@ function Navbar() {
                             width='36px'
                             height='36px'
                         />
-                        <p>Profile</p>
+                        <p
+                            className={
+                                pathMatchRoute('/profile')
+                                    ? 'navbarListItemNameActive'
+                                    : 'navbarListItemName'
+                            }>
+                            Profile
+                        </p>
                     </li>
                 </ul>
             </nav>
