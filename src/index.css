@@ -175,7 +175,18 @@ button {
     align-items: center;
 }
 
-.navbarListItem {
+.profileCard form {
+    display: grid;
+    grid-template-columns: max-content 400px;
+    grid-gap: 5px;
+    width: 100%;
+}
+
+.profileCard label {
+    margin-top: 0.3rem;
+}
+
+​ .navbarListItem {
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -316,7 +327,7 @@ button {
     }
 }
 
-.exploreHeading,
+​ .exploreHeading,
 .exploreCategoryHeading {
     font-weight: 700;
 }
