@@ -10,6 +10,8 @@ function Profile() {
         email: auth.currentUser.email,
     });
 
+    const { name, eamil } = formData;
+
     const navigate = useNavigate();
 
     const onLogout = () => {
