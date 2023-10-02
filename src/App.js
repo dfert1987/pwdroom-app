@@ -8,6 +8,7 @@ import SignUp from './pages/SignUp';
 import Explore from './pages/Explore';
 import Find from './pages/Find';
 import Profile from './pages/Profile';
+import Category from './pages/Category';
 import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
@@ -17,6 +18,11 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Explore />} />
                     <Route path='/find' element={<Find />} />
+                    <Route
+                        path='/category/:categoryName'
+                        element={<Category />}
+                    />
+
                     <Route path='/profile' element={<PrivateRoute />}>
                         <Route path='/profile' element={<Profile />} />{' '}
                     </Route>

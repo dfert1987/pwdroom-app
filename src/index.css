@@ -137,7 +137,15 @@ button {
 .pageHeader {
     font-size: 2rem;
     font-weight: 800;
-    padding-bottom: 0.5em;
+    padding-bottom: 0.25em;
+}
+
+.pageHeader.exploreHeader {
+    margin-bottom: 0;
+}
+
+.pageSubHeader {
+    margin-top: 0;
 }
 
 .navbar {
