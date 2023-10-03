@@ -4,6 +4,8 @@ import { updateDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import arrowRight from '../assets/svg/keyboardArrowRightIcon.svg';
+import bathroomIcon from '../assets/svg/toilet-sign-svgrepo-com.svg';
 
 function Profile() {
     const auth = getAuth();
@@ -97,6 +99,11 @@ function Profile() {
                         />
                     </form>
                 </div>
+                <Link to='/create-listing' className='createListing'>
+                    <img src={bathroomIcon} alt='toilet' height={'50px'} />
+                    <p>Add a bathroom listing +</p>
+                    <img src={arrowRight} alt='arrow right' />
+                </Link>
             </main>
         </div>
     );

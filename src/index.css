@@ -421,7 +421,10 @@ button {
 .categoryListings {
     padding: 0;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: stretch;
 }
 
 .categoryListing:hover {
@@ -433,8 +436,9 @@ button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    max-width: 800px;
-    padding: 0.5em;
+    width: 800px;
+    padding: 2em;
+    margin-right: 1em;
     border-radius: 1.5rem;
     background-color: rgb(214, 214, 214);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -446,16 +450,18 @@ button {
 }
 
 .categoryListingImg {
-    width: 35%;
-    height: 100px;
+    width: 45%;
     border-radius: 1.5rem;
+    padding-right: 1em;
+    height: 217px;
+
     object-fit: cover;
 }
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
     .categoryListingImg {
         width: 35%;
-        height: 217px;
         padding-right: 1em;
+        height: 217px;
     }
 }
 
@@ -508,8 +514,8 @@ button {
 }
 
 .categoryListingInfoItem img {
-    height: 30px;
-    margin-top: 0.25em;
+    height: 20px;
+    margin-top: 0.75em;
 }
 
 .loadMore {

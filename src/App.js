@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import CreateListing from './pages/CreateListing';
 import Explore from './pages/Explore';
 import Find from './pages/Find';
 import Profile from './pages/Profile';
@@ -32,6 +33,7 @@ function App() {
                         path='/forgot-password'
                         element={<ForgotPassword />}
                     />
+                    <Route path='/create-listing' element={<CreateListing />} />
                 </Routes>
                 <Navbar />
             </Router>
