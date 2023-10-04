@@ -772,10 +772,12 @@ button {
     font-weight: 600;
     margin-top: 1rem;
     display: block;
+    width: 100%;
 }
 
 .formButtons {
     display: flex;
+    width: 100%;
 }
 
 .formButton,
@@ -822,13 +824,13 @@ button {
 
 .formInputName {
     padding: 0.9rem 1rem;
-    width: 90%;
+    width: 100%;
     max-width: 450px;
 }
 
 .formInputAddress {
     padding: 0.9rem 1rem;
-    width: 90%;
+    width: 100%;
     max-width: 450px;
 }
 
@@ -847,8 +849,27 @@ button {
     opacity: 0.75;
 }
 
+.formSide {
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.formSide form {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+}
+
 .formInputFile {
     width: 100%;
+    margin-right: 0;
 }
 .formInputFile::-webkit-file-upload-button {
     background-color: #00cc66;
@@ -880,7 +901,7 @@ button {
 
 .neighborhoodDropdown {
     max-width: 450px;
-    width: 90%;
+    width: 100%;
     color: black !important;
     border-radius: 1rem;
     margin-top: 0.3em;
@@ -908,7 +929,64 @@ button {
     color: black !important;
 }
 
+.formInputFile {
+    max-width: 450px;
+}
+
 .formInstructions {
     max-width: 450px;
+    width: 100%;
     margin-top: 0.25em;
+}
+
+.bathroomSide {
+    display: none;
+}
+
+@media (min-width: 1000px) {
+    .bathroomSide {
+        display: flex;
+        width: 50%;
+    }
+
+    .formInputName {
+        max-width: 600px;
+    }
+
+    .neighborhoodDropdown {
+        max-width: 600px;
+    }
+
+    .discoBathroom {
+        width: 95%;
+        height: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        border-radius: 1rem;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .formInputAddress {
+        max-width: 600px;
+    }
+
+    .formInputFile {
+        max-width: 600px;
+    }
+
+    .formInstructions {
+        max-width: 600px;
+    }
+}
+
+.addBathroomFormPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+header .pageHeader.bathroom {
+    text-align: center;
+    width: 100%;
 }
