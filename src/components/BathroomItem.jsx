@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import ReactStars from 'react-stars';
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg';
 import pinIcon from '../assets/svg/pin.svg';
-import genderIcon from '../assets/svg/gender-trans.svg';
 import subCategoryIcon from '../assets/svg/bookmark.svg';
 
 function BathroomItem({ listing, id, onDelete }) {

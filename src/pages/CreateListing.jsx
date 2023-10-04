@@ -3,12 +3,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import Spinner from '../components/Spinner';
-import {
-    NeighborhoodOptions,
-    DefaultNeighborhoodOption,
-    BarOptions,
-    DefaultBarOption,
-} from '../assets/constants';
+import { NeighborhoodOptions, BarOptions } from '../assets/constants';
 import 'react-dropdown/style.css';
 
 function CreateListing() {
@@ -79,9 +74,51 @@ function CreateListing() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        console.log(formData)
     };
 
-    const onMutate = (e) => {};
+    const onMutate = (e, dropType) => {
+        if (dropType === 'neighborhood') {
+            setFormData((prevState) => ({
+                ...prevState,
+                neighborhood: e.value,
+            }));
+        }
+        if (dropType === 'subtype') {
+            console.log(e.value);
+            setFormData((prevState) => ({
+                ...prevState,
+                subtype: e.value,
+            }));
+        }
+        let boolean = null;
+        if (e.target) {
+            if (e.target.value === 'true') {
+                boolean = true;
+            }
+            if (e.target.value === 'false') {
+                boolean = false;
+            }
+
+            // Files
+            if (e.target.files) {
+                setFormData((prevState) => ({
+                    ...prevState,
+                    images: e.target.files,
+                }));
+            }
+            // Text/Booleans
+            if (!e.target.files) {
+                setFormData((prevState) => ({
+                    ...prevState,
+                    [e.target.id]: boolean ?? e.target.value,
+                }));
+            }
+        }
+        console.log(formData);
+    };
+
+  
 
     if (loading) {
         return <Spinner />;
@@ -122,16 +159,17 @@ function CreateListing() {
                             Restaurant
                         </button>
                     </div>
-                    <label className='formLabel'> Subtype: </label>
+                    <label className='formLabel dropLabel'> Subtype: </label>
                     <Dropdown
                         className='neighborhoodDropdown'
                         options={BarOptions}
-                        onChange={onMutate}
+                        onChange={(e) => onMutate(e, 'subtype')}
                         value={subtype}
                         placeholder='Choose a bar type'
                         controlClassName='myControlClassName'
                         arrowClassName='myArrowClassName'
                         placeholderClassName='myPlaceholderClassName'
+                        required
                     />
                     <label className='formLabel'>Name:</label>
                     <input
@@ -144,17 +182,128 @@ function CreateListing() {
                         minLength={5}
                         required
                     />
-                    <label className='formLabel'> Neighborhood: </label>
+                    <label className='formLabel'>Address:</label>
+                    <textarea
+                        className='formInputAddress'
+                        type='text'
+                        id='address'
+                        value={address}
+                        onChange={onMutate}
+                        required
+                    />
+                    <label className='formLabel dropLabel'>Neighborhood:</label>
                     <Dropdown
                         className='neighborhoodDropdown'
                         options={NeighborhoodOptions}
-                        onChange={onMutate}
+                        onChange={(e) => onMutate(e, 'neighborhood')}
                         value={neighborhood}
                         placeholder='Choose a Neighborhood'
                         controlClassName='myControlClassName'
                         arrowClassName='myArrowClassName'
                         placeholderClassName='myPlaceholderClassName'
+                        required
                     />
+                    <label className='formLabel'>Tag:</label>
+                    <p className='formInstructions'>
+                        <i>
+                            Enter a one-line description of the bar / restaurant
+                            that users will see before they click in to learn
+                            more.
+                        </i>
+                    </p>
+                    <textarea
+                        className='formInputAddress'
+                        type='text'
+                        id='tag'
+                        value={tag}
+                        onChange={onMutate}
+                        minLength={3}
+                        maxLength={100}
+                        required
+                    />
+                    <label className='formLabel'>Description:</label>
+                    <p className='formInstructions'>
+                        <i>
+                            A more detailed description of the bar / restaurant.
+                        </i>
+                    </p>
+                    <textarea
+                        className='formInputAddress'
+                        type='text'
+                        id='description'
+                        value={description}
+                        onChange={onMutate}
+                        maxLength={400}
+                    />
+                    <label className='formLabel'>Gendered / Unisex</label>
+                    <div className='formButtons'>
+                        <button
+                            type='button'
+                            className={
+                                gendered ? 'formButtonActive' : 'formButton'
+                            }
+                            id='gendered'
+                            value={true}
+                            onClick={onMutate}>
+                            Gendered
+                        </button>
+                        <button
+                            type='button'
+                            className={
+                                !gendered && gendered !== null
+                                    ? 'formButtonActive'
+                                    : 'formButton'
+                            }
+                            id='gendered'
+                            value={false}
+                            onClick={onMutate}>
+                            Unisex
+                        </button>
+                    </div>
+                    <label className='formLabel'>Multi-Stall / Private</label>
+                    <div className='formButtons'>
+                        <button
+                            type='button'
+                            className={
+                                !single && single !== null
+                                    ? 'formButtonActive'
+                                    : 'formButton'
+                            }
+                            id='single'
+                            value={false}
+                            onClick={onMutate}>
+                            Multi-Stall
+                        </button>
+                        <button
+                            type='button'
+                            className={
+                                single ? 'formButtonActive' : 'formButton'
+                            }
+                            id='single'
+                            value={true}
+                            onClick={onMutate}>
+                            Private
+                        </button>
+                    </div>
+                    <label className='formLabel'>Images:</label>
+                    <p className='formInstructions'>
+                        <i>The first image will be the cover (max 6)</i>
+                    </p>
+                    <input
+                        type='file'
+                        className='formInputFile'
+                        id='images'
+                        onChange={onMutate}
+                        max='6'
+                        accept='.jpg,.png,.jpeg'
+                        multiple
+                        required
+                    />
+                    <button
+                        type='submit'
+                        className='primaryButton createListingButton'>
+                        Add Bathroom:
+                    </button>
                 </form>
             </main>
         </div>

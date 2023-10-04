@@ -823,13 +823,13 @@ button {
 .formInputName {
     padding: 0.9rem 1rem;
     width: 90%;
-    max-width: 326px;
+    max-width: 450px;
 }
 
 .formInputAddress {
     padding: 0.9rem 1rem;
     width: 90%;
-    max-width: 326px;
+    max-width: 450px;
 }
 
 .formPriceDiv {
@@ -879,11 +879,15 @@ button {
 }
 
 .neighborhoodDropdown {
-    max-width: 326px;
+    max-width: 450px;
     width: 90%;
     color: black !important;
     border-radius: 1rem;
     margin-top: 0.3em;
+}
+
+.dropLabel {
+    margin-bottom: 0.5em;
 }
 
 .myControlClassName {
@@ -902,4 +906,9 @@ button {
 
 .myPlaceholderClassName {
     color: black !important;
+}
+
+.formInstructions {
+    max-width: 450px;
+    margin-top: 0.25em;
 }
