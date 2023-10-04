@@ -445,6 +445,10 @@ button {
     transition: transform 0.5s;
 }
 
+button {
+    cursor: pointer;
+}
+
 .categoryListingLink {
     display: contents;
 }
@@ -872,4 +876,30 @@ button {
     margin-left: 1rem;
     font-size: 0.8rem;
     opacity: 0.75;
+}
+
+.neighborhoodDropdown {
+    max-width: 326px;
+    width: 90%;
+    color: black !important;
+    border-radius: 1rem;
+    margin-top: 0.3em;
+}
+
+.myControlClassName {
+    height: 3em;
+    color: black !important;
+    border: none !important;
+    padding: 0.9rem 1rem !important;
+    cursor: pointer !important;
+    border-radius: 1rem !important;
+}
+
+.myArrowClassName {
+    margin-top: 0.5em;
+    color: black !important;
+}
+
+.myPlaceholderClassName {
+    color: black !important;
 }
