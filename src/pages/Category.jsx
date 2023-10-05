@@ -63,7 +63,7 @@ function Category() {
         <div className='category'>
             <header>
                 <p className='pageHeader'>
-                    {params.categoryName === 'bars'
+                    {params.categoryName === 'bar'
                         ? 'Bar Bathrooms'
                         : 'Restaurant Bathrooms'}
                 </p>

@@ -248,7 +248,9 @@ button {
     align-items: center;
     position: inherit;
 }
-
+.listingDetails {
+    margin-top: 0.5em;
+}
 .signInButton,
 .signUpButton,
 .signInText,
@@ -537,19 +539,49 @@ button {
 }
 
 .listingDetails {
-    margin-bottom: 10rem;
+    margin-bottom: 0.5rem;
+}
+
+.buttonsDiv {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 1.5em;
+}
+
+.addComment {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: white;
+    font-weight: bold;
+    border-radius: 2rem;
+    font-size: 20px;
+    margin-right: 3em;
+    background-color: #00cc66;
+}
+
+.addComment p {
+    padding-right: 0.5em;
+    margin-top: 1.25em;
+}
+
+.addComment img {
+    margin-top: 0.75em;
+    fill: white;
 }
 
 .shareIconDiv {
     cursor: pointer;
-    position: fixed;
-    top: 3%;
-    right: 5%;
     z-index: 2;
     background-color: #ffffff;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
+    width: 5rem;
+    height: 5rem;
+    margin-top: 0.5em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -559,6 +591,12 @@ button {
     font-weight: 600;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    margin-top: 0.5em;
+}
+
+.listingDivider {
+    width: 95%;
+    margin-top: 1em;
 }
 
 .listingLocation {
@@ -990,4 +1028,8 @@ button {
 header .pageHeader.bathroom {
     text-align: center;
     width: 100%;
+}
+
+.listingType {
+    text-transform: capitalize;
 }

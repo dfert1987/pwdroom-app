@@ -22,7 +22,7 @@ function CreateListing() {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
-        type: 'bars',
+        type: 'bar',
         subtype: 'dive',
         address: '',
         neighborhood: '',
@@ -236,12 +236,12 @@ function CreateListing() {
                             <button
                                 type='button'
                                 className={
-                                    type === 'bars'
+                                    type === 'bar'
                                         ? 'formButtonActive'
                                         : 'formButton'
                                 }
                                 id='type'
-                                value='bars'
+                                value='bar'
                                 onClick={onMutate}>
                                 Bar
                             </button>

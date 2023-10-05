@@ -5,6 +5,7 @@ import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
+import StarIcon from '../assets/svg/star-solid.svg';
 
 function Listing() {
     const [listing, setListing] = useState(null);
@@ -29,7 +30,50 @@ function Listing() {
         fetchListing();
     }, [navigate, params.listingId]);
 
-    return <div>Listing</div>;
+    console.log(listing);
+
+    if (loading) {
+        return <Spinner />;
+    }
+
+    return (
+        <main>
+            {/* slider goes here */}
+            <div className='listingDetails'>
+                <h3 className='listingName'>{listing.name}</h3>
+                <p className='listingLocation'>{listing.address}</p>
+                <p className='listingType'>
+                    {listing.type} --
+                    <i className='listingSubType'> {listing.subtype}</i>
+                </p>
+                {/* neighbhorhood */}
+            </div>
+            <div className='buttonsDiv'>
+                <button className='addComment'>
+                    <p>Add Review</p>
+                    <img
+                        src={StarIcon}
+                        alt='star'
+                        height={'30px'}
+                        fill={'white'}
+                    />
+                </button>
+                <div
+                    className='shareIconDiv'
+                    onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        setShareLinkCopied(true);
+                        setTimeout(() => {
+                            setShareLinkCopied(false);
+                        }, 2000);
+                    }}>
+                    <img src={shareIcon} alt='Share Icon' />
+                </div>
+            </div>
+            {shareLinkCopied && <p className='linkCopied'>Link Copied!</p>}
+            <hr className='listingDivider' />
+        </main>
+    );
 }
 
 export default Listing;

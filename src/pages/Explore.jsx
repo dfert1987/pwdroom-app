@@ -16,7 +16,7 @@ function Explore() {
             <main>
                 <p className='exploreCategoryHeading'>Categories</p>
                 <div className='exploreCategories'>
-                    <Link to='category/bars'>
+                    <Link to='category/bar'>
                         <img
                             src={barCategoryImage}
                             alt='bar'
