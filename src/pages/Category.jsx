@@ -25,6 +25,7 @@ function Category() {
             try {
                 // Get Reference
                 const listingsRef = collection(db, 'listings');
+                console.log(listingsRef);
 
                 // Create a query
 
@@ -55,6 +56,8 @@ function Category() {
 
         fetchListings();
     }, [params.categoryName]);
+
+    console.log(listings);
 
     return (
         <div className='category'>

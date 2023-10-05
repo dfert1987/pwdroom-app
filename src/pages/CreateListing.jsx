@@ -7,6 +7,7 @@ import {
     uploadBytesResumable,
     getDownloadURL,
 } from 'firebase/storage';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config.js';
 import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
@@ -16,13 +17,12 @@ import { v4 as uuid } from 'uuid';
 import { NeighborhoodOptions, BarOptions } from '../assets/constants';
 import discoBathroom from '../assets/jpg/discobathroom.jpeg';
 import 'react-dropdown/style.css';
-import { upload } from '@testing-library/user-event/dist/upload.js';
 
 function CreateListing() {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
-        type: 'bar',
+        type: 'bars',
         subtype: 'dive',
         address: '',
         neighborhood: '',
@@ -36,7 +36,6 @@ function CreateListing() {
         safety: 0,
         privacy: 0,
         vibes: 0,
-        imageUrls: [],
         latitude: 0,
         longitude: 0,
     });
@@ -108,6 +107,7 @@ function CreateListing() {
             data.status === 'ZERO_RESULTS'
                 ? undefined
                 : data.results[0].formatted_address;
+        console.log(data.results[0].formatted_address);
 
         if (location === undefined || location.includes('undefined')) {
             setLoading(false);
@@ -121,7 +121,6 @@ function CreateListing() {
                 const fileName = `${auth.currentUser.uid}-${
                     image.name
                 }-${uuid()}`;
-                console.log(fileName);
 
                 const storageRef = ref(storage, 'images/' + fileName);
 
@@ -166,9 +165,19 @@ function CreateListing() {
             return;
         });
 
-        console.log(imgUrls);
-        console.log(formData);
+        const formDataCopy = {
+            ...formData,
+            imageUrls: imgUrls,
+            geolocation,
+            address: location,
+            timestamp: serverTimestamp(),
+        };
+
+        const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
+
         setLoading(false);
+        toast.success('Bathroom Added!');
+        navigate(`/category/${formDataCopy.type}/${docRef.id}`);
     };
 
     const onMutate = (e, dropType) => {
@@ -179,7 +188,6 @@ function CreateListing() {
             }));
         }
         if (dropType === 'subtype') {
-            console.log(e.value);
             setFormData((prevState) => ({
                 ...prevState,
                 subtype: e.value,
@@ -228,12 +236,12 @@ function CreateListing() {
                             <button
                                 type='button'
                                 className={
-                                    type === 'bar'
+                                    type === 'bars'
                                         ? 'formButtonActive'
                                         : 'formButton'
                                 }
                                 id='type'
-                                value='bar'
+                                value='bars'
                                 onClick={onMutate}>
                                 Bar
                             </button>
