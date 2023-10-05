@@ -3,6 +3,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-dropdown';
 import Spinner from '../components/Spinner';
+import { toast } from 'react-toastify';
 import { NeighborhoodOptions, BarOptions } from '../assets/constants';
 import discoBathroom from '../assets/jpg/discobathroom.jpeg';
 import 'react-dropdown/style.css';
@@ -73,8 +74,45 @@ function CreateListing() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMounted]);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+
+        if (imageUrls.length > 6) {
+            setLoading(false);
+            toast.error('Max 6 images.');
+            return;
+        }
+
+        let geolocation = {};
+        let location;
+
+        const response = await fetch(
+            `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+        );
+
+        const data = await response.json();
+
+        geolocation.lat = data.results[0]?.geometry.location.lat ?? 0;
+        geolocation.lng = data.results[0]?.geometry.location.lng ?? 0;
+
+        location =
+            data.status === 'ZERO_RESULTS'
+                ? undefined
+                : data.results[0].formatted_address;
+
+        if (location === undefined || location.includes('undefined')) {
+            setLoading(false);
+            toast.error('Please enter a correct address');
+        } else {
+            setFormData((prevState) => ({
+                ...prevState,
+                latitude: geolocation.lat,
+                longitude: geolocation.lng,
+            }));
+        }
+
+        setLoading(false);
+        console.log(location);
         console.log(formData);
     };
 
@@ -116,7 +154,6 @@ function CreateListing() {
                 }));
             }
         }
-        console.log(formData);
     };
 
     if (loading) {
@@ -158,7 +195,9 @@ function CreateListing() {
                                 Restaurant
                             </button>
                         </div>
-                        <label className='formLabel dropLabel'>Subtype:</label>
+                        <label className='formLabel dropLabel'>
+                            Sub-Category:
+                        </label>
                         <Dropdown
                             className='neighborhoodDropdown'
                             options={BarOptions}

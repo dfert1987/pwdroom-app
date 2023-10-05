@@ -936,6 +936,7 @@ button {
 .formInstructions {
     max-width: 450px;
     width: 100%;
+    margin-bottom: 0.25em;
     margin-top: 0.25em;
 }
 

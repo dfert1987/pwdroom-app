@@ -30,17 +30,17 @@ export const DefaultNeighborhoodOption = NeighborhoodOptions[0];
 export const BarOptions = [
     'Dive',
     'Cocktail Bar',
-    'Honky-Tonk',
+    'Brewery',
     'Night Club',
+    'Honky-Tonk',
+    'Sports Bar',
     'Patio Bar',
     'Pub',
-    'Brewery',
     'Wine Bar',
-    'Sports Bar',
     'LGBTQ+ Bar',
-    'Distillery',
     'Music Venue',
     'Comedy Club',
+    'Distillery',
     'Other',
 ];
 
