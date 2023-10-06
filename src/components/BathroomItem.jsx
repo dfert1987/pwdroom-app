@@ -25,6 +25,7 @@ function BathroomItem({ listing, id, onDelete }) {
                         value={listing.overall}
                         size={25}
                         edit={false}
+                        half={true}
                         color2={'#00cc66'}
                     />
                     <p className='categoryListingTag'>{listing.tag}</p>

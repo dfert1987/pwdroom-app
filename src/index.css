@@ -88,7 +88,6 @@ button {
 .pageContainer,
 .offers,
 .profile,
-.listingDetails,
 .category,
 .explore {
     margin: 1rem;
@@ -97,7 +96,7 @@ button {
     .pageContainer,
     .offers,
     .profile,
-    .listingDetails,
+    .listingDetailsContainer,
     .category,
     .explore {
         margin: 3rem;
@@ -545,7 +544,6 @@ button {
 .buttonsDiv {
     display: flex;
     flex-direction: row;
-    margin-left: 3em;
     margin-right: 3em;
     margin-top: 1em;
 }
@@ -593,7 +591,7 @@ button {
 
 .listingName {
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5em;
 }
@@ -612,14 +610,46 @@ button {
     padding-right: 1em;
 }
 
+.ratingHeader {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+.ratingLabel {
+    margin-bottom: 0;
+    font-weight: 600;
+}
+
+.listingDetailContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .listingLocation {
     margin-top: 0;
     font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.25em;
+}
+
+.listingDescription {
+    margin-top: 0;
 }
 
 .listingDetailsTwo {
     display: flex;
-    margin-left: 3em;
+}
+
+.listingLeft {
+    width: 50%;
+}
+
+.listingRatings {
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 .discountPrice {

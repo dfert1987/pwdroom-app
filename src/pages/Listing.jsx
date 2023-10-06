@@ -43,8 +43,11 @@ function Listing() {
             <div className='listingDetailContainer'>
                 <div className='listingLeft'>
                     <div className='listingDetails'>
-                        <h3 className='listingName'>{listing.name}</h3>
+                        <h2 className='listingName'>{listing.name}</h2>
                         <p className='listingLocation'>{listing.address}</p>
+                        <p className='listingDescription'>
+                            <i>{listing.description}</i>
+                        </p>
                         <p className='listingType'>
                             {listing.type} --
                             <i className='listingSubType'> {listing.subtype}</i>
@@ -93,7 +96,83 @@ function Listing() {
                         <p className='linkCopied'>Link Copied!</p>
                     )}
                 </div>
-                <div className='listingRight'></div>
+                <div className='listingRight'>
+                    <h3 className='ratingHeader'>Rating:</h3>
+                    <div className='listingRatings'>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Overall:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.overall}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Cleanliness:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.cleanliness}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Privacy:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.privacy}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Surfaces:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.flat}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Safety:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.safety}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                        <div className='ratingContainer'>
+                            <p className='ratingLabel'>Vibes:</p>
+                            <ReactStars
+                                className='bathroomPageStars'
+                                count={5}
+                                value={listing.vibes}
+                                edit={false}
+                                size={25}
+                                half={true}
+                                color2={'#00cc66'}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
             <hr className='listingDivider' />
         </main>
