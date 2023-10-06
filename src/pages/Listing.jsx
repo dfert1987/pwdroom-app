@@ -68,33 +68,10 @@ function Listing() {
                             <h4 className='booleanDetail'>Private Room: No</h4>
                         )}
                     </div>
-                    <div className='buttonsDiv'>
-                        <button className='addComment'>
-                            <p>Add Review</p>
-                            <img
-                                src={StarIcon}
-                                alt='star'
-                                height={'30px'}
-                                fill={'white'}
-                            />
-                        </button>
-                        <div
-                            className='shareIconDiv'
-                            onClick={() => {
-                                navigator.clipboard.writeText(
-                                    window.location.href
-                                );
-                                setShareLinkCopied(true);
-                                setTimeout(() => {
-                                    setShareLinkCopied(false);
-                                }, 2000);
-                            }}>
-                            <img src={shareIcon} alt='Share Icon' />
-                        </div>
+                    <div className='mapArea'>
+                        <p className='listingLocationTitle'>Location:</p>
+                        {/* map area */}
                     </div>
-                    {shareLinkCopied && (
-                        <p className='linkCopied'>Link Copied!</p>
-                    )}
                 </div>
                 <div className='listingRight'>
                     <h3 className='ratingHeader'>Rating:</h3>
@@ -172,8 +149,44 @@ function Listing() {
                             />
                         </div>
                     </div>
+                    <div className='buttonsDiv'>
+                        <button className='addComment'>
+                            <p>Add Review</p>
+                            <img
+                                src={StarIcon}
+                                alt='star'
+                                height={'30px'}
+                                fill={'white'}
+                            />
+                        </button>
+                        <div
+                            className='shareIconDiv'
+                            onClick={() => {
+                                navigator.clipboard.writeText(
+                                    window.location.href
+                                );
+                                setShareLinkCopied(true);
+                                setTimeout(() => {
+                                    setShareLinkCopied(false);
+                                }, 2000);
+                            }}>
+                                <p className="shareText">SHARE </p>
+                            <img src={shareIcon} alt='Share Icon' />
+                        </div>
+                    </div>
+                    {shareLinkCopied && (
+                        <p className='linkCopied'>Link Copied!</p>
+                    )}
+                    {auth.currentUser?.uid !== listing.userRef && (
+                        <Link
+                            to={`/contact/${listing.userRef}?listingName=${listing.name}&listingLocation=${listing.address}`}
+                            className='primaryButton'>
+                            Contact Listing Author
+                        </Link>
+                    )}
                 </div>
             </div>
+
             <hr className='listingDivider' />
         </main>
     );
