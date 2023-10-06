@@ -547,7 +547,7 @@ button {
     flex-direction: row;
     margin-left: 3em;
     margin-right: 3em;
-    margin-top: 1.5em;
+    margin-top: 1em;
 }
 
 .addComment {
@@ -560,17 +560,22 @@ button {
     font-weight: bold;
     border-radius: 2rem;
     font-size: 20px;
+    height: 2.5em;
     margin-right: 3em;
     background-color: #00cc66;
 }
 
 .addComment p {
     padding-right: 0.5em;
-    margin-top: 1.25em;
+    margin-top: 0.25em;
+}
+
+.listingDetailsContainer {
+    display: flex;
+    flex-direction: row;
 }
 
 .addComment img {
-    margin-top: 0.75em;
     fill: white;
 }
 
@@ -579,9 +584,8 @@ button {
     z-index: 2;
     background-color: #ffffff;
     border-radius: 50%;
-    width: 5rem;
-    height: 5rem;
-    margin-top: 0.5em;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -599,9 +603,23 @@ button {
     margin-top: 1em;
 }
 
+.booleanDetail {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
+
+.booleanDetail.first {
+    padding-right: 1em;
+}
+
 .listingLocation {
     margin-top: 0;
     font-weight: 600;
+}
+
+.listingDetailsTwo {
+    display: flex;
+    margin-left: 3em;
 }
 
 .discountPrice {

@@ -6,7 +6,6 @@ import pinIcon from '../assets/svg/pin.svg';
 import subCategoryIcon from '../assets/svg/bookmark.svg';
 
 function BathroomItem({ listing, id, onDelete }) {
-    console.log(listing);
     return (
         <li className='categoryListing'>
             <Link

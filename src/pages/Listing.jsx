@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
+import ReactStars from 'react-stars';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
 import StarIcon from '../assets/svg/star-solid.svg';
@@ -39,38 +40,61 @@ function Listing() {
     return (
         <main>
             {/* slider goes here */}
-            <div className='listingDetails'>
-                <h3 className='listingName'>{listing.name}</h3>
-                <p className='listingLocation'>{listing.address}</p>
-                <p className='listingType'>
-                    {listing.type} --
-                    <i className='listingSubType'> {listing.subtype}</i>
-                </p>
-                {/* neighbhorhood */}
-            </div>
-            <div className='buttonsDiv'>
-                <button className='addComment'>
-                    <p>Add Review</p>
-                    <img
-                        src={StarIcon}
-                        alt='star'
-                        height={'30px'}
-                        fill={'white'}
-                    />
-                </button>
-                <div
-                    className='shareIconDiv'
-                    onClick={() => {
-                        navigator.clipboard.writeText(window.location.href);
-                        setShareLinkCopied(true);
-                        setTimeout(() => {
-                            setShareLinkCopied(false);
-                        }, 2000);
-                    }}>
-                    <img src={shareIcon} alt='Share Icon' />
+            <div className='listingDetailContainer'>
+                <div className='listingLeft'>
+                    <div className='listingDetails'>
+                        <h3 className='listingName'>{listing.name}</h3>
+                        <p className='listingLocation'>{listing.address}</p>
+                        <p className='listingType'>
+                            {listing.type} --
+                            <i className='listingSubType'> {listing.subtype}</i>
+                        </p>
+                        <p className='listingType'>{listing.neighborhood}</p>
+                    </div>
+                    <div className='listingDetailsTwo'>
+                        {listing.gendered ? (
+                            <h4 className='booleanDetail first'>
+                                Gendered: Male/Female
+                            </h4>
+                        ) : (
+                            <h4 className='booleanDetail'>Gendered: Unisex</h4>
+                        )}
+                        {listing.single ? (
+                            <h4 className='booleanDetail'>Private Room: Yes</h4>
+                        ) : (
+                            <h4 className='booleanDetail'>Private Room: No</h4>
+                        )}
+                    </div>
+                    <div className='buttonsDiv'>
+                        <button className='addComment'>
+                            <p>Add Review</p>
+                            <img
+                                src={StarIcon}
+                                alt='star'
+                                height={'30px'}
+                                fill={'white'}
+                            />
+                        </button>
+                        <div
+                            className='shareIconDiv'
+                            onClick={() => {
+                                navigator.clipboard.writeText(
+                                    window.location.href
+                                );
+                                setShareLinkCopied(true);
+                                setTimeout(() => {
+                                    setShareLinkCopied(false);
+                                }, 2000);
+                            }}>
+                            <img src={shareIcon} alt='Share Icon' />
+                        </div>
+                    </div>
+                    {shareLinkCopied && (
+                        <p className='linkCopied'>Link Copied!</p>
+                    )}
                 </div>
+                <div className='listingRight'></div>
             </div>
-            {shareLinkCopied && <p className='linkCopied'>Link Copied!</p>}
             <hr className='listingDivider' />
         </main>
     );
