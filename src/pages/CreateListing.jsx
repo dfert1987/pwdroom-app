@@ -50,15 +50,7 @@ function CreateListing() {
         description,
         single,
         gendered,
-        overall,
-        cleanliness,
-        flat,
-        safety,
-        privacy,
-        vibes,
         imageUrls,
-        latitude,
-        longitude,
     } = formData;
 
     const auth = getAuth();
