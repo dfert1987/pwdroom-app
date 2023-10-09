@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
-// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
@@ -45,26 +44,28 @@ function Listing() {
         <main className='listingMain'>
             <div className='swiperContainer'>
                 <Swiper
-                    modules={[Navigation]}
+                    modules={[Navigation, A11y, Pagination, Scrollbar]}
                     slidesPerView={1}
                     navigation={true}
                     pagination={{ clickable: true }}>
                     {listing.imageUrls.map((url, index) => (
                         <SwiperSlide key={index}>
-                            <div
-                                style={{
-                                    height: '25em',
-                                    width: '80%',
-                                    marginLeft: 'auto',
-                                    marginTop: '1em',
-                                    marginRight: 'auto',
-                                    backgroundImage: `url(${listing.imageUrls[index]})`,
-                                    backgroundRepeat: 'no-repeat',
-                                    backgroundPosition: 'center',
-                                    backgroundPositionY: 'center',
-                                    backgroundSize: 'cover',
-                                }}
-                                className='swiperSlideDiv'></div>
+                            <a href={listing.imageUrls[index]}>
+                                <div
+                                    style={{
+                                        height: '25em',
+                                        width: '100%',
+                                        marginLeft: 'auto',
+                                        marginTop: '1em',
+                                        marginRight: 'auto',
+                                        backgroundImage: `url(${listing.imageUrls[index]})`,
+                                        backgroundRepeat: 'no-repeat',
+                                        backgroundPosition: 'center',
+                                        backgroundPositionY: 'center',
+                                        backgroundSize: 'cover',
+                                    }}
+                                    className='swiperSlideDiv'></div>
+                            </a>
                         </SwiperSlide>
                     ))}
                 </Swiper>

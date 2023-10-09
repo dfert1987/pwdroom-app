@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Slider from '../components/Slider';
 import barCategoryImage from '../assets/jpg/barcategoryimage.jpg';
 import restaurantCategoryImage from '../assets/jpg/restaurantcategoryimage.jpeg';
 
@@ -14,6 +15,7 @@ function Explore() {
             </header>
 
             <main>
+                <Slider />
                 <p className='exploreCategoryHeading'>Categories</p>
                 <div className='exploreCategories'>
                     <Link to='category/bar'>

@@ -57,8 +57,6 @@ function Category() {
         fetchListings();
     }, [params.categoryName]);
 
-    console.log(listings);
-
     return (
         <div className='category'>
             <header>
