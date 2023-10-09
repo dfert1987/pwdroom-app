@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+// import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import { getDoc, doc } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { db } from '../firebase.config';
@@ -8,6 +11,7 @@ import ReactStars from 'react-stars';
 import Spinner from '../components/Spinner';
 import shareIcon from '../assets/svg/shareIcon.svg';
 import StarIcon from '../assets/svg/star-solid.svg';
+import 'swiper/swiper-bundle.css';
 
 function Listing() {
     const [listing, setListing] = useState(null);
@@ -24,7 +28,6 @@ function Listing() {
             const docSnap = await getDoc(docRef);
 
             if (docSnap.exists()) {
-                console.log(docSnap.data());
                 setListing(docSnap.data());
                 setLoading(false);
             }
@@ -39,8 +42,33 @@ function Listing() {
     }
 
     return (
-        <main>
-            {/* slider goes here */}
+        <main className='listingMain'>
+            <div className='swiperContainer'>
+                <Swiper
+                    modules={[Navigation]}
+                    slidesPerView={1}
+                    navigation={true}
+                    pagination={{ clickable: true }}>
+                    {listing.imageUrls.map((url, index) => (
+                        <SwiperSlide key={index}>
+                            <div
+                                style={{
+                                    height: '25em',
+                                    width: '80%',
+                                    marginLeft: 'auto',
+                                    marginTop: '1em',
+                                    marginRight: 'auto',
+                                    backgroundImage: `url(${listing.imageUrls[index]})`,
+                                    backgroundRepeat: 'no-repeat',
+                                    backgroundPosition: 'center',
+                                    backgroundPositionY: 'center',
+                                    backgroundSize: 'cover',
+                                }}
+                                className='swiperSlideDiv'></div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            </div>
             <div className='listingDetailContainer'>
                 <div className='listingLeft'>
                     <div className='listingDetails'>
@@ -204,7 +232,6 @@ function Listing() {
                     )}
                 </div>
             </div>
-
             <hr className='listingDivider' />
         </main>
     );

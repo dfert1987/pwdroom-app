@@ -571,6 +571,7 @@ button {
 .listingDetailsContainer {
     display: flex;
     flex-direction: row;
+    padding-bottom: 2em;
 }
 
 .addComment img {
@@ -599,6 +600,8 @@ button {
 .listingDivider {
     width: 95%;
     margin-top: 1em;
+    padding-bottom: 4em;
+    border-left: none;
 }
 
 .booleanDetail {
@@ -700,12 +703,21 @@ button {
     width: 100%;
     height: 200px;
     overflow-x: hidden;
-    margin-bottom: 3rem;
+    padding-bottom: 1em;
+}
+.swiperContainer {
+    padding: 1em;
+    padding-top: 0.5em;
 }
 @media (min-width: 1024px) {
     .leafletContainer {
         height: 400px;
     }
+}
+
+.listingMain {
+    height: 100%;
+    padding-bottom: 3em;
 }
 
 .linkCopied {
